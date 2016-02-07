@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Yelp
 //
-//  Created by Vatyx on 2/6/16.
-//  Copyright © 2016 Vatyx. All rights reserved.
+//  Created by Timothy Lee on 9/19/14.
+//  Copyright (c) 2014 Timothy Lee. All rights reserved.
 //
 
 import UIKit
