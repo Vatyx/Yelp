@@ -1,5 +1,7 @@
 # Project 3 - Yelp
 
+<img src='https://lh4.ggpht.com/F0F4Z965uf3psiHu5h77e-8o-Yla68BEaJI8xLfK-V3JkMK4yQv1WLqqZQCwYhDevKoa=w300' title='Icon' width='150px' alt='Icon' />
+
 **Yelp** is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
 Time spent: **X** hours spent in total
