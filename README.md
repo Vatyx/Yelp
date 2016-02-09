@@ -4,7 +4,7 @@
 
 **Yelp** is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: **X** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
@@ -42,7 +42,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Very unfortunately this doesn't work on iPhone 6s properly. I tried very hard to get the image scaling to work but it just wouldn't cooperate.
+
+Screen tearing in gif is due to being ran on a VM
 
 ## License
 
