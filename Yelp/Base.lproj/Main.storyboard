@@ -106,6 +106,7 @@
                                             <outlet property="nameLabel" destination="AiM-9R-Qxh" id="Wvd-p6-wdI"/>
                                             <outlet property="ratingImageView" destination="Zmm-58-KYW" id="9pi-d9-Kwj"/>
                                             <outlet property="reviewsCountLabel" destination="mUT-At-KBV" id="bj4-CU-XK7"/>
+                                            <segue destination="dia-M9-WYW" kind="push" id="LXD-tW-9id"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -146,6 +147,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgb-4b-F1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1355" y="338"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="5c4-zb-SBY">
+            <objects>
+                <viewController id="dia-M9-WYW" customClass="DetailViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GiJ-97-ukj"/>
+                        <viewControllerLayoutGuide type="bottom" id="5eK-kn-HIB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cCF-Xc-Ytg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVh-SD-h6R">
+                                <rect key="frame" x="20" y="84" width="280" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3z-f4-t2T">
+                                <rect key="frame" x="107" y="132" width="107" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="Call "/>
+                                <connections>
+                                    <action selector="callBusiness:" destination="dia-M9-WYW" eventType="touchUpInside" id="C2d-7p-tfx"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PSi-9A-oCd">
+                                <rect key="frame" x="0.0" y="219" width="320" height="349"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uVh-SD-h6R" firstAttribute="top" secondItem="GiJ-97-ukj" secondAttribute="bottom" constant="20" id="2Uf-BI-vyn"/>
+                            <constraint firstAttribute="trailing" secondItem="uVh-SD-h6R" secondAttribute="trailing" constant="20" id="9GE-mS-n2U"/>
+                            <constraint firstItem="PSi-9A-oCd" firstAttribute="top" secondItem="C3z-f4-t2T" secondAttribute="bottom" constant="42" id="MYl-JW-jos"/>
+                            <constraint firstItem="PSi-9A-oCd" firstAttribute="leading" secondItem="cCF-Xc-Ytg" secondAttribute="leading" id="Nwd-Rh-dRY"/>
+                            <constraint firstItem="5eK-kn-HIB" firstAttribute="top" secondItem="PSi-9A-oCd" secondAttribute="bottom" id="Sya-CL-Itv"/>
+                            <constraint firstItem="uVh-SD-h6R" firstAttribute="leading" secondItem="cCF-Xc-Ytg" secondAttribute="leading" constant="20" id="hWI-Ww-8gv"/>
+                            <constraint firstAttribute="trailing" secondItem="PSi-9A-oCd" secondAttribute="trailing" id="iCJ-z9-QhY"/>
+                            <constraint firstItem="C3z-f4-t2T" firstAttribute="top" secondItem="uVh-SD-h6R" secondAttribute="bottom" constant="8" id="odm-nq-Xgg"/>
+                            <constraint firstAttribute="trailing" secondItem="C3z-f4-t2T" secondAttribute="trailing" constant="106" id="rL9-sj-xXr"/>
+                            <constraint firstItem="C3z-f4-t2T" firstAttribute="leading" secondItem="cCF-Xc-Ytg" secondAttribute="leading" constant="107" id="sFp-5x-9Xe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="q9d-jI-hRv"/>
+                    <connections>
+                        <outlet property="businessName" destination="uVh-SD-h6R" id="bzP-fa-RxW"/>
+                        <outlet property="map" destination="PSi-9A-oCd" id="w9S-f2-hdX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEt-z1-MvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1784" y="338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Fa-En-Pvb">

@@ -19,7 +19,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     
     var searching = false
     var isMoreDataLoading = false
-    var loadingMoreView : InfiniteScrollActivityView?
+    //var loadingMoreView : InfiniteScrollActivityView?
     
     var defaultSearch = "Food"
     var currentTotal = 15
@@ -36,21 +36,11 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         navigationController!.navigationBar.barTintColor = UIColor(red: 203/255.0, green: 49/255.0, blue: 8/255.0, alpha: 1)
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
-        let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
-        loadingMoreView = InfiniteScrollActivityView(frame: frame)
-        loadingMoreView!.hidden = true
-        tableView.addSubview(loadingMoreView!)
-        
-        var insets = tableView.contentInset;
-        insets.bottom += InfiniteScrollActivityView.defaultHeight;
-        tableView.contentInset = insets
-        
         search(defaultSearch)
     }
     
     func search(term: String)
     {
-        currentTotal = 15
         Business.searchWithTerm(term, sort: YelpSortMode.Distance, categories: nil, deals:nil, limit: currentTotal, completion: { (businesses: [Business]!, error: NSError!) -> Void in
             if let businesses = businesses{
                 self.businesses = businesses
@@ -67,24 +57,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         })
     }
     
-    func loadMoreData(){
-        currentTotal += 15
-        Business.searchWithTerm(defaultSearch, sort:YelpSortMode.Distance , categories: nil, deals: nil,limit: currentTotal) {  (businesses: [Business]!, error: NSError!) -> Void in
-            if (businesses == nil){
-                if !self.searchBar.text!.isEmpty {
-                    self.search(self.searchBar.text!)
-                }else{
-                    self.search(self.defaultSearch)
-                }
-            }else {
-                self.businesses = businesses
-                self.tableView.reloadData()
-            }
-            self.loadingMoreView!.stopAnimating()
-            self.isMoreDataLoading = false
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -163,30 +135,21 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     override func shouldAutorotate() -> Bool {
         return false;
     }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if(!isMoreDataLoading) {
-            // Calculate the position of one screen length before the bottom of the results
-            let scrollViewContentHeight = tableView.contentSize.height
-            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
-            
-            // When the user has scrolled past the threshold, start requesting
-            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
-                isMoreDataLoading = true
-                
-                loadMoreData()
-            }
-        }
-    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let cell = sender as? UITableViewCell
+        if cell != nil {
+            let indexPath = tableView.indexPathForCell(cell!)
+            let business = businesses![indexPath!.row]
+            let detailViewController = segue.destinationViewController as! DetailViewController
+            detailViewController.business = business
+        }
+        
     }
-    */
+    
 
 }
